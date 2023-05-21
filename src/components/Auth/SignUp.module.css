@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.274);
+  padding: 40px;
+  border-radius: 20px;
+  border: 10px solid rgb(71, 6, 55);
+  animation-name: first;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+@keyframes first {
+  from {
+    opacity: 0;
+    padding: 0;
+    border-radius: 5rem;
+  }
+  to {
+    opacity: 1;
+    padding: 40px;
+    border-radius: 20px;
+  }
+}
+.container .from {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+}
+.container .from h2 {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+.container .from .inputbox {
+  position: relative;
+  width: 300px;
+  animation-name: inputincrease;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+@keyframes inputincrease {
+  from {
+    width: 200px;
+  }
+  to {
+    width: 300px;
+  }
+}
+.container .from .inputbox input,
+.container .from .inputbox select {
+  border: none;
+  padding: 12px 10px 12px 48px;
+  width: 100%;
+  background: rgb(39, 3, 30);
+  border: 1px solid rgb(71, 6, 55);
+  border-radius: 25px;
+  font-weight: 300;
+  color: #fff;
+  transition: 1s;
+  box-shadow: -5px -5px 15px rgb(7, 88, 88), 5px 5px 15px rgb(3, 41, 41);
+}
+.container .from .inputbox span {
+  border-radius: 25px;
+  background: rgb(39, 3, 30);
+  position: absolute;
+  left: 0;
+  color: rgb(211, 208, 208);
+  padding: 9px 10px 8px 48px;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+.container .from .inputbox input:valid,
+.container .from .inputbox input:focus,
+.container .from .inputbox select:valid,
+.container .from .inputbox select:focus {
+  border: 1px solid aqua;
+}
+.container .from .inputbox input:valid ~ span,
+.container .from .inputbox input:focus ~ span,
+.container .from .inputbox select:valid ~ span,
+.container .from .inputbox select:focus ~ span {
+  color: aqua;
+  border: 1px solid aqua;
+  border-radius: 10px;
+  transform: translateX(25px) translateY(-8px);
+  font-size: 0.6em;
+  padding: 0 8px;
+}
+
+.icon {
+  z-index: 1;
+  position: absolute;
+  top: 13px;
+  left: 17px;
+  color: aqua;
+  padding-right: 8px;
+  width: 20px;
+  border-right: 1px solid aqua;
+}
+
+.container .from .inputbox input[type="submit"] {
+  font-weight: 500;
+  background: rgb(132, 194, 212);
+  color: black;
+  padding: 12px 12px 12px 12px;
+  cursor: pointer;
+  box-shadow: inset -5px -5px 15px rgb(222, 240, 240),
+    inset 5px 5px 15px rgb(197, 216, 216);
+}
+
+.container .from p {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+}

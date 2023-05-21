@@ -1,0 +1,46 @@
+.parent {
+  z-index: 99;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.623);
+  height: 100vh;
+  width: 100vw;
+}
+.child {
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader {
+  border-radius: 50%;
+  border-right: 16px solid #db34cd;
+  width: 250px;
+  height: 250px;
+  animation: spin linear 1.5s infinite;
+}
+.text {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}

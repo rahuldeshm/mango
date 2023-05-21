@@ -1,0 +1,9 @@
+.main {
+  background-image: url("https://img.freepik.com/free-photo/beautiful-chopped-ripe-mango-dark-wooden-surface_1150-41945.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 88vh;
+}
