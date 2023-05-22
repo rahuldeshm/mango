@@ -1,8 +1,13 @@
 import React from "react";
 import classes from "./Profile.module.css";
+import Personnal from "./Personnal";
 
 function Profile() {
-  return <h1> this is Profile page of Seller0000</h1>;
+  return (
+    <div className={classes.main}>
+      <Personnal />
+    </div>
+  );
 }
 
 export default Profile;

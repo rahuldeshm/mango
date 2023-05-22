@@ -1,26 +1,37 @@
 .header {
-  height: 5vh;
+  height: 4vh;
   position: relative;
   justify-content: space-around;
   align-items: center;
   flex-wrap: nowrap;
   display: flex;
-  background-color: rgb(7, 5, 0);
-  color: rgb(235, 164, 13);
+  background-color: rgb(253, 207, 122);
 }
 .header button {
   border: none;
-  border-radius: 0.5rem;
-  height: 1.5rem;
-  width: 6rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: 1px solid #0c0000;
+  height: 4vh;
+  width: 25vw;
   background-color: rgb(253, 207, 122);
   transition: all 0.5s;
 }
 .active button {
-  background-color: orange;
-  box-shadow: 3px 3px 10px rgb(95, 73, 31), -3px -3px 10px rgb(95, 73, 31);
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+  border-bottom: 0px solid rgb(238, 181, 181);
+  border-top: 1px solid rgb(238, 181, 181);
+  border-left: 1px solid rgb(238, 181, 181);
+  border-right: 1px solid rgb(238, 181, 181);
+  background-color: rgb(48, 56, 20);
 }
 .header button:hover {
-  background-color: rgb(56, 190, 16);
-  box-shadow: 2px 2px 10px rgb(252, 251, 249), -2px -2px 10px rgb(245, 244, 243);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border: none;
+  background-color: rgb(144, 146, 143);
+  box-shadow: 0px 0px 3px rgb(22, 0, 0);
 }

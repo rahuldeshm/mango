@@ -5,6 +5,11 @@
   align-items: center;
   flex-wrap: nowrap;
   display: flex;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(12, 10, 0),
+    rgb(160, 132, 9)
+  );
   background-color: rgb(53, 37, 3);
   color: rgb(235, 164, 13);
 }
