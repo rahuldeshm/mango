@@ -6,13 +6,15 @@ import Loader from "./ui/Loader/Loader";
 import Header from "./components/Header/header";
 import { Route, Redirect } from "react-router-dom/cjs/react-router-dom";
 import Seller from "./components/Seller/Seller";
+import { useSelector } from "react-redux";
 
 function App() {
+  const loader = useSelector((state) => state.ui.loader);
   // return ;
   return (
     <>
       <Header />
-      {/* <Loader /> */}
+      {loader && <Loader />}
       <Route path="/" exact>
         <Redirect to="/seller" />
       </Route>

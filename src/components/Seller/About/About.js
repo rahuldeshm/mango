@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./About.module.css";
-import Hero from "../../Hero";
-import ErrorBoundary from "../../../ui/ErrorBoundary";
+import Hero from "../../ErrorHandlings/Hero";
+import ErrorBoundary from "../../ErrorHandlings/ErrorBoundary";
 
 function About() {
   return (

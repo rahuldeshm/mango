@@ -1,38 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./SignUp.module.css";
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
+import useAuth from "../Hooks/useAuth";
 
 function SignUp(props) {
+  const [setAuthorisation] = useAuth();
+  const [loginas, setLoginas] = useState("Login");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [cpass, setCpass] = useState("");
+  const signupHandler = (e) => {
+    e.preventDefault();
+    if (cpass === pass) {
+      setAuthorisation({ email, password: pass, loginas, signup: true });
+    } else {
+      alert("Password and confirm password doesn't match..!");
+    }
+  };
   return (
     <div className={classes.container}>
       <div className={classes.from}>
         <h2>SignUp</h2>
         <div className={classes.inputbox}>
-          <input type="text" required />
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            required
+          />
           <FaUser className={classes.icon} />
           <span>Email</span>
         </div>
         <div className={classes.inputbox}>
-          <input type="Password" required />
+          <input
+            onChange={(e) => setPass(e.target.value)}
+            type="Password"
+            required
+          />
           <FaLock className={classes.icon} />
           <span>Password</span>
         </div>
         <div className={classes.inputbox}>
-          <input type="Password" required />
+          <input
+            onChange={(e) => setCpass(e.target.value)}
+            type="Password"
+            required
+          />
           <FaLock className={classes.icon} />
           <span>Confirm Password</span>
         </div>
         <div className={classes.inputbox}>
-          <select required>
-            <option selected>Login</option>
-            <option>Login as a Merchant</option>
+          <select
+            onChange={(e) => setLoginas(e.target.value)}
+            required
+            defaultValue={"Login"}
+          >
+            <option>Login</option>
+            <option>Seller</option>
           </select>
           <MdLocalShipping className={classes.icon} />
           <span>type</span>
         </div>
         <div className={classes.inputbox}>
-          <input type="submit" value="Sign Up" />
+          <input
+            onClick={(e) => signupHandler(e)}
+            type="submit"
+            value="Sign Up"
+          />
         </div>
         <p onClick={props.onClick}>Already a user Login</p>
       </div>

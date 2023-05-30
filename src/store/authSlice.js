@@ -1,13 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+const authorisation = JSON.parse(localStorage.getItem("authorised"));
+const authorised = !!authorisation;
 const initialState = { authorisation, authorised };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    addAuthorisation(state, action) {
-      state.authorisation = action.payload.authorisation;
+    login(state, action) {
+      state.authorisation = action.payload;
+      state.authorised = true;
+    },
+    logout(state, action) {
+      state.authorisation = null;
+      state.authorised = false;
     },
   },
 });

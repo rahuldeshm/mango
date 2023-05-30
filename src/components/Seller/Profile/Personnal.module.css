@@ -16,7 +16,7 @@
   height: 440px;
   transform-origin: bottom right;
   background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
-  animation: animate 6s linear infinite;
+  animation: animate1 6s linear infinite;
 }
 .box::after {
   content: " ";
@@ -31,6 +31,14 @@
 }
 
 @keyframes animate {
+  0% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(540deg);
+  }
+}
+@keyframes animate1 {
   0% {
     transform: rotate(0deg);
   }

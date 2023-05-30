@@ -4,10 +4,9 @@ import classes from "./Auth.module.css";
 import SignUp from "./SignUp";
 
 function Auth() {
-  const [authToggle, setAuthToggle] = useState(true);
+  const [authToggle, setAuthToggle] = useState(false);
   return (
     <div className={classes.main}>
-      <image src="https://a-z-animals.com/media/2023/04/shutterstock_546330160.jpg" />
       {authToggle ? (
         <SignUp
           onClick={() => setAuthToggle(!authToggle)}
