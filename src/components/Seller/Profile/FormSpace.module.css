@@ -51,17 +51,18 @@
   display: flex;
   flex-direction: column;
   padding: 30px;
-  border-radius: 3px;
-  top: 5px;
-  left: 5px;
-  width: 390px;
-  height: 430px;
+  border-radius: 6px;
+  top: 2px;
+  left: 2px;
+  width: 396px;
+  height: 436px;
   background-color: rgb(71, 48, 5);
   position: absolute;
   z-index: 1;
 }
 
 .form h2 {
+  text-transform: capitalize;
   padding: 0px;
   color: aqua;
   text-align: center;
@@ -83,4 +84,14 @@
 }
 .header button:hover {
   border: 2px solid rgb(5, 117, 29);
+}
+
+.circle {
+  padding: 1rem;
+  border-radius: 10rem;
+  overflow: hidden;
+}
+.circle img {
+  object-fit: cover;
+  width: 20rem;
 }

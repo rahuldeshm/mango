@@ -6,8 +6,8 @@ import Account from "./Account";
 import Other from "./Other";
 
 function FormSpace() {
-  const [showForm, setShowForm] = useState(4);
-  const list = ["personnal", "account", "other"];
+  const [showForm, setShowForm] = useState(0);
+  const list = ["personnal", "account", "other", "Profile Completed"];
   const previousHandler = () => {
     if (showForm === 0) {
       return;
@@ -15,6 +15,13 @@ function FormSpace() {
       setShowForm(showForm - 1);
     }
   };
+  const saveHandler = () => {
+    setShowForm(showForm + 1);
+  };
+  const submitHandler = () => {
+    setShowForm(showForm + 1);
+  };
+
   return (
     <div className={classes.box}>
       <div className={classes.form}>
@@ -22,12 +29,21 @@ function FormSpace() {
           <button onClick={previousHandler}>
             <GrLinkPrevious />
           </button>
-          <h2>Personnal Details</h2>
-          <button>Save</button>
+          <h2>{list[showForm]}</h2>
         </div>
-        {list[showForm] === "personnal" && <Personal />}
-        {list[showForm] === "account" && <Account />}
-        {list[showForm] === "other" && <Other />}
+        {list[showForm] === "personnal" && (
+          <Personal saveHandler={saveHandler} />
+        )}
+        {list[showForm] === "account" && <Account saveHandler={saveHandler} />}
+        {list[showForm] === "other" && <Other saveHandler={submitHandler} />}
+        {list[showForm] === "Profile Completed" && (
+          <div className={classes.circle}>
+            <img
+              alt="Profile Completed"
+              src="https://static-00.iconduck.com/assets.00/process-completed-icon-499x512-mhraisqh.png"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
