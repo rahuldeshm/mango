@@ -5,28 +5,28 @@ import { HiIdentification, HiLocationMarker } from "react-icons/hi";
 import { IoPersonSharp } from "react-icons/io5";
 import { TbBrandMonday } from "react-icons/tb";
 
-function Account() {
+function Personal() {
   return (
     <form className={classes.form}>
       <div className={classes.inputbox}>
         <input type="text" required />
         <HiIdentification className={classes.icon} />
-        <span>Bank Account No :</span>
+        <span>Your Pan No :</span>
       </div>
       <div className={classes.inputbox}>
         <input type="text" required />
         <IoPersonSharp className={classes.icon} />
-        <span>IFSC code :</span>
+        <span>Full Name :</span>
       </div>
       <div className={classes.inputbox}>
         <input type="text" required />
         <HiLocationMarker className={classes.icon} />
-        <span>Branch :</span>
+        <span>Address :</span>
       </div>
       <div className={classes.inputbox}>
         <input type="text" required />
         <TbBrandMonday className={classes.icon} />
-        <span>Confirm Account No</span>
+        <span>logo image :</span>
       </div>
       <div className={classes.inputbox}>
         <button>
@@ -38,4 +38,4 @@ function Account() {
   );
 }
 
-export default Account;
+export default Personal;

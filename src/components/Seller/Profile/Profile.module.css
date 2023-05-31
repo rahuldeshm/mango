@@ -1,7 +1,26 @@
 .main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 84vh;
   background-color: rgb(48, 56, 20);
+}
+.bar {
+  display: flex;
+  border-radius: 4px;
+  top: 0;
+  left: 0;
+  height: 10px;
+  width: 400px;
+  background-color: rgb(79, 85, 57);
+  padding: 2px;
+}
+
+.fill {
+  width: 0%;
+  height: 100%;
+  border-radius: 4px;
+  background-color: rgb(209, 255, 44);
+  transition: 0.7s;
 }
