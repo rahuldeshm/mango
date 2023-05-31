@@ -10,22 +10,31 @@ import { useSelector } from "react-redux";
 
 function App() {
   const loader = useSelector((state) => state.ui.loader);
+  const authorised = useSelector((state) => state.auth.authorised);
+  const type = useSelector((state) => state.auth.type);
   // return ;
   return (
     <>
       <Header />
       {loader && <Loader />}
-      <Route path="/" exact>
-        <Redirect to="/seller" />
-      </Route>
+
       <Route path="/auth">
         <Auth />
       </Route>
       <Route path="/welcome">
         <Welcome />
       </Route>
-      <Route path="/seller">
-        <Seller />
+      {authorised && (
+        <Route path="/seller">
+          <Seller />
+        </Route>
+      )}
+      <Route path="*" exact>
+        <Redirect
+          to={
+            authorised ? (type === "Seller" ? "/seller" : "/welcome") : "/auth"
+          }
+        />
       </Route>
     </>
   );

@@ -3,7 +3,7 @@ import classes from "./About.module.css";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
 
 function About() {
-  const [view, setView] = useState([false, false, false, false, false]);
+  const [view, setView] = useState([true, false, false, false, false]);
   let edit = [...view];
   return (
     <div className={classes.main}>

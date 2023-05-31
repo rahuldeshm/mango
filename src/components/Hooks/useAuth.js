@@ -31,12 +31,14 @@ function useAuth() {
 
     let authdata = await res.json();
     if (res.ok) {
-      dispatch(authActions.login(authdata));
       if (data.loginas === "Login") {
+        localStorage.setItem("authorisedLogin", JSON.stringify(authdata));
+        dispatch(authActions.login({ authorisation: authdata, type: "Login" }));
         history.push("/welcome");
       } else {
-        alert(
-          `${authdata.email} is your Seller account complete profile to enlist your product's`
+        localStorage.setItem("authorisedSeller", JSON.stringify(authdata));
+        dispatch(
+          authActions.login({ authorisation: authdata, type: "Seller" })
         );
         history.push("/seller");
       }

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 function useLocalStorage() {
-  return [data, setData];
+  const [data, setData] = useState(null);
+  const funToManipulate = () => {};
+  return [data, funToManipulate];
 }
 
 export default useLocalStorage;
