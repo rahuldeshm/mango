@@ -4,24 +4,25 @@ import { GrLinkNext } from "react-icons/gr";
 import { HiIdentification, HiLocationMarker } from "react-icons/hi";
 import { IoPersonSharp } from "react-icons/io5";
 import { TbBrandMonday } from "react-icons/tb";
+import useLocalstorage from "../../Hooks/useLocalStorage";
 
 function Account(props) {
+  const [object, setObject] = useLocalstorage("Profile", "account");
   const [accountNo, setAccountNo] = useState("");
   const [ifsc, setIfsc] = useState("");
   const [branch, setBranch] = useState("");
   const [caccount, setCaccount] = useState("");
 
   const localFetch = () => {
-    const localdata = JSON.parse(localStorage.getItem("account"));
-    if (!!localdata) {
-      setAccountNo(localdata.accountNo);
-      setIfsc(localdata.ifsc);
-      setBranch(localdata.branch);
-      setCaccount(localdata.caccount);
+    if (!!object) {
+      setAccountNo(object.accountNo);
+      setIfsc(object.ifsc);
+      setBranch(object.branch);
+      setCaccount(object.caccount);
     }
   };
 
-  useEffect(localFetch, []);
+  useEffect(localFetch, [object]);
 
   const saveHandler = (e) => {
     e.preventDefault();
@@ -29,11 +30,8 @@ function Account(props) {
       alert("account No and confirm account number doesn't match");
       return;
     }
-    localStorage.setItem(
-      "account",
-      JSON.stringify({ accountNo, ifsc, branch, caccount })
-    );
-    props.saveHandler("account", accountNo, ifsc, branch, caccount);
+    setObject("account", { accountNo, ifsc, branch, caccount });
+    props.saveHandler();
   };
   return (
     <form className={classes.form}>

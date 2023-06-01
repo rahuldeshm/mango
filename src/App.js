@@ -24,17 +24,13 @@ function App() {
       <Route path="/welcome">
         <Welcome />
       </Route>
-      {authorised && (
+      {type === "Seller" && (
         <Route path="/seller">
           <Seller />
         </Route>
       )}
-      <Route path="*" exact>
-        <Redirect
-          to={
-            authorised ? (type === "Seller" ? "/seller" : "/welcome") : "/auth"
-          }
-        />
+      <Route path="*">
+        <Redirect to={type === "Seller" ? "/seller" : "/welcome"} />
       </Route>
     </>
   );

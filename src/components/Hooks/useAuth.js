@@ -30,13 +30,14 @@ function useAuth() {
     });
 
     let authdata = await res.json();
+    console.log(authdata);
     if (res.ok) {
       if (data.loginas === "Login") {
-        localStorage.setItem("authorisedLogin", JSON.stringify(authdata));
+        localStorage.setItem("Login", JSON.stringify(authdata));
         dispatch(authActions.login({ authorisation: authdata, type: "Login" }));
         history.push("/welcome");
       } else {
-        localStorage.setItem("authorisedSeller", JSON.stringify(authdata));
+        localStorage.setItem("Seller", JSON.stringify(authdata));
         dispatch(
           authActions.login({ authorisation: authdata, type: "Seller" })
         );

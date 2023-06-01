@@ -6,31 +6,29 @@ import { IoPersonSharp } from "react-icons/io5";
 import { TbBrandMonday } from "react-icons/tb";
 import { useState } from "react";
 import { useEffect } from "react";
+import useLocalstorage from "../../Hooks/useLocalStorage";
 
 function Personal(props) {
+  const [object, setObject] = useLocalstorage("Profile", "personal");
   const [panNo, setPanno] = useState("");
   const [fullName, setFullName] = useState("");
   const [address, setAddress] = useState("");
   const [logo, setLogo] = useState("");
 
   const localFetch = () => {
-    const localdata = JSON.parse(localStorage.getItem("personal"));
-    if (!!localdata) {
-      setPanno(localdata.panNo);
-      setFullName(localdata.fullName);
-      setAddress(localdata.address);
-      setLogo(localdata.logo);
+    if (!!object) {
+      setPanno(object.panNo);
+      setFullName(object.fullName);
+      setAddress(object.address);
+      setLogo(object.logo);
     }
   };
 
-  useEffect(localFetch, []);
+  useEffect(localFetch, [object]);
   const saveHandler = (e) => {
     e.preventDefault();
-    localStorage.setItem(
-      "personal",
-      JSON.stringify({ panNo, fullName, address, logo })
-    );
-    props.saveHandler("personal", panNo, fullName, address, logo);
+    setObject("personal", { panNo, fullName, address, logo });
+    props.saveHandler();
   };
   return (
     <form onSubmit={saveHandler} className={classes.form}>

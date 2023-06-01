@@ -1,17 +1,18 @@
 import React from "react";
 import classes from "./header.module.css";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../store/authSlice";
 
 function Header() {
-  const authorised = useSelector((state) => state.auth.authorised);
+  const dispatch = useDispatch();
+  const authorisation = useSelector((state) => state.auth.authorisation);
   const type = useSelector((state) => state.auth.type);
   function merchantLogin() {
     console.log("clicked on merchent");
   }
   const logoutHandler = () => {
-    const item = type === "Seller" ? "authorisedSeller" : "authorisedLogin";
-    localStorage.removeItem(item);
+    dispatch(authActions.logout());
   };
   return (
     <div className={classes.header}>
@@ -23,12 +24,16 @@ function Header() {
         ></div>
       </div>
       <h1>MANGO SEASON</h1>
-
-      {authorised && (
+      <div className={classes.logoutbtn}>
+        {!!type && <p>{authorisation.displayName}</p>}
         <NavLink to="/auth">
-          <button onClick={logoutHandler}> Logout</button>
+          {!!type ? (
+            <button onClick={logoutHandler}> Logout</button>
+          ) : (
+            <button onClick={logoutHandler}>Login</button>
+          )}
         </NavLink>
-      )}
+      </div>
     </div>
   );
 }

@@ -3,32 +3,30 @@ import classes from "./Personal.module.css";
 import { HiIdentification, HiLocationMarker } from "react-icons/hi";
 import { IoPersonSharp } from "react-icons/io5";
 import { TbBrandMonday } from "react-icons/tb";
+import useLocalstorage from "../../Hooks/useLocalStorage";
 
 function Other(props) {
+  const [object, setObject] = useLocalstorage("Profile", "other");
   const [sAddress, setSAddress] = useState("");
   const [bAddress, setBAddress] = useState("");
   const [things, setThings] = useState("");
   const [panImage, setPanImage] = useState("");
 
   const localFetch = () => {
-    const localdata = JSON.parse(localStorage.getItem("other"));
-    if (!!localdata) {
-      setSAddress(localdata.sAddress);
-      setBAddress(localdata.bAddress);
-      setThings(localdata.things);
-      setPanImage(localdata.panImage);
+    if (!!object) {
+      setSAddress(object.sAddress);
+      setBAddress(object.bAddress);
+      setThings(object.things);
+      setPanImage(object.panImage);
     }
   };
 
-  useEffect(localFetch, []);
+  useEffect(localFetch, [object]);
 
   const saveHandler = (e) => {
     e.preventDefault();
-    localStorage.setItem(
-      "other",
-      JSON.stringify({ sAddress, bAddress, things, panImage })
-    );
-    props.saveHandler("other", sAddress, bAddress, things, panImage);
+    setObject("other", { sAddress, bAddress, things, panImage });
+    props.saveHandler();
   };
   return (
     <form className={classes.form}>

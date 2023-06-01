@@ -34,6 +34,7 @@
 }
 
 .header button {
+  background-color: rebeccapurple;
   height: 2rem;
   width: 6rem;
 }
@@ -42,7 +43,7 @@
   border: none;
 } */
 .header button:hover {
-  background-color: rgb(12, 170, 12);
+  background-color: rgb(145, 76, 12);
   box-shadow: 3px 3px 10px rgb(243, 227, 81);
   border: none;
 }
