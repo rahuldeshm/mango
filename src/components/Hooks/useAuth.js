@@ -30,7 +30,6 @@ function useAuth() {
     });
 
     let authdata = await res.json();
-    console.log(authdata);
     if (res.ok) {
       if (data.loginas === "Login") {
         localStorage.setItem("Login", JSON.stringify(authdata));

@@ -16,8 +16,8 @@ const authSlice = createSlice({
       state.authorisation = action.payload.authorisation;
       state.type = action.payload.type;
     },
-    logout(state, action) {
-      localStorage.removeItem(type);
+    logout(state) {
+      localStorage.removeItem(state.type);
       state.authorisation = null;
       state.type = null;
     },

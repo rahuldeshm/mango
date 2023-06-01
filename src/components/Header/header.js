@@ -25,7 +25,7 @@ function Header() {
       </div>
       <h1>MANGO SEASON</h1>
       <div className={classes.logoutbtn}>
-        {!!type && <p>{authorisation.displayName}</p>}
+        {!!type && <p>{authorisation.email}</p>}
         <NavLink to="/auth">
           {!!type ? (
             <button onClick={logoutHandler}> Logout</button>

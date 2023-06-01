@@ -34,7 +34,7 @@ function Account(props) {
     props.saveHandler();
   };
   return (
-    <form className={classes.form}>
+    <form onSubmit={saveHandler} className={classes.form}>
       <div className={classes.inputbox}>
         <input
           value={accountNo}
@@ -76,7 +76,7 @@ function Account(props) {
         <span>Confirm Account No</span>
       </div>
       <div className={classes.inputbox}>
-        <button onClick={saveHandler}>
+        <button>
           Next
           <GrLinkNext />
         </button>

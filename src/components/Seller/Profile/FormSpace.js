@@ -5,21 +5,20 @@ import Personal from "./Personal";
 import Account from "./Account";
 import Other from "./Other";
 
-function FormSpace() {
-  const [showForm, setShowForm] = useState(0);
+function FormSpace(props) {
   const list = ["personnal", "account", "other", "Profile Completed"];
   const previousHandler = () => {
-    if (showForm === 0) {
+    if (props.showForm === 0) {
       return;
     } else {
-      setShowForm(showForm - 1);
+      props.setShowForm(props.showForm - 1);
     }
   };
   const saveHandler = () => {
-    setShowForm(showForm + 1);
+    props.setShowForm(props.showForm + 1);
   };
   const submitHandler = () => {
-    setShowForm(showForm + 1);
+    props.submitHandler();
   };
 
   return (
@@ -29,14 +28,18 @@ function FormSpace() {
           <button onClick={previousHandler}>
             <GrLinkPrevious />
           </button>
-          <h2>{list[showForm]}</h2>
+          <h2>{list[props.showForm]}</h2>
         </div>
-        {list[showForm] === "personnal" && (
+        {list[props.showForm] === "personnal" && (
           <Personal saveHandler={saveHandler} />
         )}
-        {list[showForm] === "account" && <Account saveHandler={saveHandler} />}
-        {list[showForm] === "other" && <Other saveHandler={submitHandler} />}
-        {list[showForm] === "Profile Completed" && (
+        {list[props.showForm] === "account" && (
+          <Account saveHandler={saveHandler} />
+        )}
+        {list[props.showForm] === "other" && (
+          <Other saveHandler={submitHandler} />
+        )}
+        {list[props.showForm] === "Profile Completed" && (
           <div className={classes.circle}>
             <img
               alt="Profile Completed"

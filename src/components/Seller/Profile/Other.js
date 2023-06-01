@@ -29,7 +29,7 @@ function Other(props) {
     props.saveHandler();
   };
   return (
-    <form className={classes.form}>
+    <form onSubmit={saveHandler} className={classes.form}>
       <div className={classes.inputbox}>
         <input
           value={sAddress}
@@ -71,9 +71,7 @@ function Other(props) {
         <span>Pan image Link:</span>
       </div>
       <div className={classes.inputbox}>
-        <button onClick={saveHandler} style={{ backgroundColor: "green" }}>
-          Submit
-        </button>
+        <button style={{ backgroundColor: "green" }}>Submit</button>
       </div>
     </form>
   );
