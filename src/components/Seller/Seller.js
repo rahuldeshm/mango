@@ -5,6 +5,7 @@ import About from "./About/About";
 import Profile from "./Profile/Profile";
 import YourProducts from "./YourProducts/YourProducts";
 import NewProducts from "./NewProducts/NewProducts";
+import Footer from "../../Footer/Footer";
 
 function Seller() {
   return (
@@ -27,6 +28,7 @@ function Seller() {
           <NewProducts />
         </Route>
       </Switch>
+      <Footer />
     </>
   );
 }

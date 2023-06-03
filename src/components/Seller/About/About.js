@@ -6,7 +6,7 @@ function About() {
   const [view, setView] = useState([true, false, false, false, false]);
   let edit = [...view];
   return (
-    <div className={classes.main}>
+    <div className="main">
       <div>
         <div
           onClick={() => {

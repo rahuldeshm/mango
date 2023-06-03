@@ -7,6 +7,7 @@ import Header from "./components/Header/header";
 import { Route, Redirect } from "react-router-dom/cjs/react-router-dom";
 import Seller from "./components/Seller/Seller";
 import { useSelector } from "react-redux";
+import Footer from "./Footer/Footer";
 
 function App() {
   const loader = useSelector((state) => state.ui.loader);

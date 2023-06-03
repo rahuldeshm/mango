@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import useFetch from "../../Hooks/useFetch";
-let first = true;
+
 const local = (email) => {
   return JSON.parse(localStorage.getItem(`Profile${email}`));
 };
@@ -25,28 +25,24 @@ function Profile() {
     );
   }
   const fetchHandler = () => {
-    console.log("fetch runned");
     if (!!locald) {
-      if (first) {
-        first = false;
-        const len = Object.keys(locald).length;
-        setShowForm(len);
-      }
+      setShowForm(Object.keys(locald).length);
     } else if (!!fetchdata) {
       let key = Object.keys(fetchdata)[0];
       localStorage.setItem(
         `Profile${email}`,
         JSON.stringify({ ...fetchdata[key] })
       );
+      setShowForm(3);
     } else {
       console.log("tried to fetch data");
       serverFetchdata("Profile", "GET");
     }
   };
-  useEffect(fetchHandler, [locald, email, serverFetchdata, fetchdata]);
+  useEffect(fetchHandler, [fetchdata]);
 
   return (
-    <div className={classes.main}>
+    <div className="main">
       <div className={classes.bar}>
         <div
           className={classes.fill}

@@ -1,7 +1,4 @@
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 84vh;
-  background-color: rgb(48, 56, 20);
+.inner {
+  background-color: rgb(238, 212, 165);
+  padding: 1rem;
 }

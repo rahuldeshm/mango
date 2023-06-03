@@ -1,13 +1,5 @@
-.main {
-  display: flexbox;
-  justify-content: center;
-  min-height: 84vh;
-  background-color: rgb(48, 56, 20);
-}
-.inner {
-  width: 50rem;
-}
 .heading {
+  width: 90vw;
   border: 1px solid #ccc;
   padding: 5px;
   font-size: 1rem;
@@ -23,5 +15,6 @@
   rotate: 180deg;
 }
 .para {
+  width: 90vw;
   background-color: rgb(241, 215, 164);
 }
