@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/uiSlice";
 
-const url = "https://mango-7694c-default-rtdb.firebaseio.com/";
+const url = "https://mango-7694c-default-rtdb.firebaseio.com";
 
 function useFetch(initialState) {
-  const email = useSelector((state) => state.auth.authorisation.email)
-    .replace("@", "")
-    .replace(".", "");
   const dispatch = useDispatch();
   const [datastate, setData] = useState(null);
 
-  const fetchHandler = async (key, method, payload) => {
-    console.log(key, method, payload);
+  const fetchHandler = async (key, method, email, payload, putkey) => {
+    console.log(key, method, email, payload, putkey);
+    let emailf = !!email ? `/${email}` : "";
     let body = !!payload ? JSON.stringify(payload) : null;
+    let isputkey = !!putkey ? putkey : "";
     dispatch(uiActions.setLoader());
-    const res = await fetch(`${url}${email}/${key}.json`, {
+    const res = await fetch(`${url}${emailf}/${key}/${isputkey}.json`, {
       method,
       body,
       headers: {
@@ -25,8 +24,10 @@ function useFetch(initialState) {
     const data = await res.json();
     if (res.ok) {
       if (method === "GET") {
-        console.log("dataupdated");
         setData(data);
+      } else {
+        dispatch(uiActions.setLoader());
+        return data;
       }
     } else {
       alert(data.error.message);

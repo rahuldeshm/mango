@@ -6,7 +6,11 @@ if (!!!authorisation) {
   type = "Login";
 }
 type = !!authorisation ? type : null;
-const initialState = { authorisation, type };
+let email = "";
+if (!!authorisation) {
+  email = authorisation.email.replace("@", "").replace(".", "");
+}
+const initialState = { authorisation, type, email };
 
 const authSlice = createSlice({
   name: "auth",
@@ -15,11 +19,15 @@ const authSlice = createSlice({
     login(state, action) {
       state.authorisation = action.payload.authorisation;
       state.type = action.payload.type;
+      state.email = action.payload.authorisation.email
+        .replace("@", "")
+        .replace(".", "");
     },
     logout(state) {
       localStorage.removeItem(state.type);
       state.authorisation = null;
       state.type = null;
+      state.email = "";
     },
   },
 });

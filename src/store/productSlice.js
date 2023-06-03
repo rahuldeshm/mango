@@ -6,10 +6,13 @@ const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-    addProduct(state, actions) {},
+    addProduct(state, action) {
+      state.products = [...state.products, action.payload];
+      console.log(state.products);
+    },
   },
 });
 
-export const {} = productSlice.actions;
+export const productActions = productSlice.actions;
 
 export default productSlice.reducer;

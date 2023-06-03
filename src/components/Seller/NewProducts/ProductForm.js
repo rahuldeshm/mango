@@ -49,73 +49,79 @@ const ProductForm = (props) => {
   }
 
   return (
-    <form className={styles.form}>
-      <label className={styles.label} onClick={handleLabelClick}>
-        Name of Product:
-        <input
-          className={styles.input}
-          type="text"
-          value={productName}
-          onChange={(e) => setProductName(e.target.value)}
-        />
-      </label>
-      <br />
-      <label className={styles.label} onClick={handleLabelClick}>
-        Description of Product:
-        <textarea
-          className={styles.textarea}
-          value={productDescription}
-          onChange={(e) => setProductDescription(e.target.value)}
-        />
-      </label>
-      <br />
+    <form>
+      <div className={styles.form}>
+        <div className={styles.first}>
+          <label className={styles.label} onClick={handleLabelClick}>
+            Name of Product:
+            <input
+              className={styles.input}
+              type="text"
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
+            />
+          </label>
+          <br />
+          <label className={styles.label} onClick={handleLabelClick}>
+            Description of Product:
+            <textarea
+              className={styles.textarea}
+              value={productDescription}
+              onChange={(e) => setProductDescription(e.target.value)}
+            />
+          </label>
+          <br />
 
-      <label className={styles.label}>
-        Price per Dozen:
-        <input
-          className={styles.input}
-          type="number"
-          value={pricePerDozen}
-          onChange={(e) => setPricePerDozen(e.target.value)}
-        />
-      </label>
-      <br />
-      <label className={styles.label}>
-        Image of product:
-        {imageuploaders}
-      </label>
-      <br />
-      <label className={styles.label}>
-        Currently Available in Dozen:
-        <input
-          className={styles.input}
-          type="number"
-          value={availableInDozen}
-          onChange={(e) => setAvailableInDozen(e.target.value)}
-        />
-      </label>
-      <br />
-      <label className={styles.label}>
-        Can Return:
-        <input
-          className={styles.checkbox}
-          type="checkbox"
-          checked={canReturn}
-          onChange={(e) => setCanReturn(e.target.checked)}
-        />
-      </label>
-      <br />
-      {canReturn && (
-        <label className={styles.label}>
-          Conditions to Return:
-          <input
-            className={styles.input}
-            type="text"
-            value={returnConditions}
-            onChange={(e) => setReturnConditions(e.target.value)}
-          />
-        </label>
-      )}
+          <label className={styles.label}>
+            Price per Dozen:
+            <input
+              className={styles.input}
+              type="number"
+              value={pricePerDozen}
+              onChange={(e) => setPricePerDozen(e.target.value)}
+            />
+          </label>
+        </div>
+        <br />
+        <div className={styles.second}>
+          <label className={styles.label}>
+            Image of product:
+            {imageuploaders}
+          </label>
+          <br />
+          <label className={styles.label}>
+            Currently Available in Dozen:
+            <input
+              className={styles.input}
+              type="number"
+              value={availableInDozen}
+              onChange={(e) => setAvailableInDozen(e.target.value)}
+            />
+          </label>
+          <br />
+          <label className={styles.label}>
+            Can Return:
+            <input
+              className={styles.checkbox}
+              type="checkbox"
+              checked={canReturn}
+              onChange={(e) => setCanReturn(e.target.checked)}
+            />
+          </label>
+          <br />
+          {canReturn && (
+            <label className={styles.label}>
+              Conditions to Return:
+              <input
+                className={styles.input}
+                type="text"
+                value={returnConditions}
+                onChange={(e) => setReturnConditions(e.target.value)}
+              />
+            </label>
+          )}
+        </div>
+      </div>
       <br />
       <button onClick={handleSubmit} className={styles.button} type="submit">
         Submit

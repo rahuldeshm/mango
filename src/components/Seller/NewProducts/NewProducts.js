@@ -2,8 +2,12 @@ import React from "react";
 import classes from "./NewProducts.module.css";
 import ProductForm from "./ProductForm";
 import useFetch from "../../Hooks/useFetch";
+import { useDispatch, useSelector } from "react-redux";
+import { productActions } from "../../../store/productSlice";
 
 function NewProducts() {
+  const dispatch = useDispatch();
+  const email = useSelector((state) => state.auth.email);
   const [dataSendedToserver, sendDatatoserver] = useFetch();
   const dataHandler = async (
     product,
@@ -14,7 +18,8 @@ function NewProducts() {
     canReturn,
     condition
   ) => {
-    const data = await sendDatatoserver("products", "POST", {
+    const data = await sendDatatoserver("products", "POST", "", {
+      email,
       product,
       discription,
       price,
@@ -23,6 +28,19 @@ function NewProducts() {
       canReturn,
       condition,
     });
+    dispatch(
+      productActions.addProduct({
+        id: data.name,
+        email,
+        product,
+        discription,
+        price,
+        imglist,
+        available,
+        canReturn,
+        condition,
+      })
+    );
   };
 
   return (
