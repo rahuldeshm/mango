@@ -7,8 +7,12 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     addProduct(state, action) {
-      state.products = [...state.products, action.payload];
-      console.log(state.products);
+      state.products = Array.isArray(action.payload)
+        ? [...state.products, ...action.payload]
+        : [...state.products, action.payload];
+    },
+    logout(state, action) {
+      state.products = [];
     },
   },
 });

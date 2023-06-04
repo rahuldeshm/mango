@@ -1,10 +1,17 @@
 import React from "react";
 import classes from "./YourProducts.module.css";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import useFetch from "../../Hooks/useFetch";
+import ProductItem from "./ProductItem";
 
 function YourProducts() {
+  const productList = useSelector((state) => state.product.products);
   return (
-    <div className="main">
-      <h1> this is your products</h1>
+    <div className={classes.main}>
+      {productList.map((e) => (
+        <ProductItem key={e.id} data={e} />
+      ))}
     </div>
   );
 }

@@ -4,11 +4,13 @@ import ProductForm from "./ProductForm";
 import useFetch from "../../Hooks/useFetch";
 import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../../../store/productSlice";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function NewProducts() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const email = useSelector((state) => state.auth.email);
-  const [dataSendedToserver, sendDatatoserver] = useFetch();
+  const [dataSendedToserver, sendDatatoserver] = useFetch(null);
   const dataHandler = async (
     product,
     discription,
@@ -41,6 +43,7 @@ function NewProducts() {
         condition,
       })
     );
+    history.push("/seller/yourproducts");
   };
 
   return (

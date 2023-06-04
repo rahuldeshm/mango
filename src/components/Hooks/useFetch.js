@@ -6,7 +6,7 @@ const url = "https://mango-7694c-default-rtdb.firebaseio.com";
 
 function useFetch(initialState) {
   const dispatch = useDispatch();
-  const [datastate, setData] = useState(null);
+  const [datastate, setData] = useState(initialState);
 
   const fetchHandler = async (key, method, email, payload, putkey) => {
     console.log(key, method, email, payload, putkey);

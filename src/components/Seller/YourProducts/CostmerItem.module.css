@@ -1,0 +1,17 @@
+.like button {
+  width: 50%;
+  height: 1.5rem;
+}
+.cart input,
+button {
+  box-sizing: border-box;
+  height: 2rem;
+  transition: 1s;
+}
+.cart input {
+  width: 70%;
+}
+
+.cart button {
+  width: 30%;
+}

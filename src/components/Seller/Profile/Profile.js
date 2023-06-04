@@ -10,7 +10,7 @@ const local = (email) => {
   return JSON.parse(localStorage.getItem(`Profile${email}`));
 };
 function Profile() {
-  const [fetchdata, serverFetchdata] = useFetch();
+  const [fetchdata, serverFetchdata] = useFetch(null);
   const email = useSelector((state) => state.auth.email);
   const [showForm, setShowForm] = useState(0);
   const wid = `${(showForm * 100) / 3}%`;
@@ -44,7 +44,7 @@ function Profile() {
     }
   };
   useEffect(fetchHandler, [fetchdata]);
-
+  console.log("component rerendered");
   return (
     <div className="main">
       <div className={classes.bar}>
