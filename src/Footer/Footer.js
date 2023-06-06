@@ -21,19 +21,19 @@ function Footer() {
             <li>
               <a href="https://www.facebook.com/">
                 <AiFillFacebook />
-                facebook
+                <p>facebook</p>
               </a>
             </li>
             <li>
               <a href="https://www.twitter.com/">
                 <AiFillTwitterSquare />
-                twitter
+                <p>twitter</p>
               </a>
             </li>
             <li>
               <a href="https://www.instagram.com/">
                 <AiFillInstagram />
-                instagram
+                <p className={styles.para}>instagram</p>
               </a>
             </li>
           </ul>

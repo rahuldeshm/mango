@@ -31,13 +31,21 @@
 }
 
 .socialMedia a {
+  display: flex;
   color: #ddb504;
   text-decoration: none;
   font-size: 20px;
 }
-
+.socialMedia p {
+  display: block;
+}
 .footerBottom {
   margin-top: 15px;
   text-align: center;
   color: #e4f129;
+}
+@media (max-width: 700px) {
+  .socialMedia p {
+    display: none;
+  }
 }

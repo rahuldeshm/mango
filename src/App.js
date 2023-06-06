@@ -6,14 +6,50 @@ import Loader from "./ui/Loader/Loader";
 import Header from "./components/Header/header";
 import { Route, Redirect } from "react-router-dom/cjs/react-router-dom";
 import Seller from "./components/Seller/Seller";
-import { useSelector } from "react-redux";
-import Footer from "./Footer/Footer";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { uiActions } from "./store/uiSlice";
+import { productActions } from "./store/productSlice";
 
+const url = "https://mango-7694c-default-rtdb.firebaseio.com";
 function App() {
   const loader = useSelector((state) => state.ui.loader);
-  const authorised = useSelector((state) => state.auth.authorised);
   const type = useSelector((state) => state.auth.type);
-  // return ;
+  const email = useSelector((state) => state.auth.email);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    async function fetchHandler() {
+      dispatch(uiActions.setLoader());
+      const res = await fetch(`${url}/products.json`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      if (res.ok) {
+        const keys = Object.keys(data);
+        let filtered = [];
+        if (type === "Seller") {
+          for (let i of keys) {
+            if (data[i].email === email) {
+              filtered.push({ ...data[i], id: i });
+            }
+          }
+          dispatch(productActions.addProduct(filtered));
+        } else {
+          for (let i of keys) {
+            filtered.push({ ...data[i], id: i });
+          }
+          dispatch(productActions.addProduct(filtered));
+        }
+      } else {
+        alert(data.error.message);
+      }
+      dispatch(uiActions.setLoader());
+    }
+    fetchHandler();
+  }, []);
   return (
     <>
       <Header />

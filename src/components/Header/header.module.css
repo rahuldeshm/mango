@@ -47,3 +47,9 @@
   box-shadow: 3px 3px 10px rgb(243, 227, 81);
   border: none;
 }
+.logoutbtn div {
+  display: flex;
+}
+.logoutbtn p {
+  padding-bottom: 3px;
+}

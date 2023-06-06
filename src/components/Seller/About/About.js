@@ -21,7 +21,10 @@ function About() {
           <p>General</p>
         </div>
         {view[0] && (
-          <div className={classes.para}>
+          <div
+            className={`${classes.para} ${view[0] && classes.activatedpara}`}
+            style={{ height: view[0] ? "auto" : "0" }}
+          >
             this is general information of Mango season we are identified for
             best quality Mangos for your region and if we have athis is general
             information of Mango season we are identified for best quality
@@ -32,7 +35,18 @@ function About() {
             have athis is general information of Mango season we are identified
             for best quality Mangos for your region and if we have athis is
             general information of Mango season we are identified for best
-            quality Mangos for your region and if we have a
+            quality Mangos for your region and if we have a this is general
+            information of Mango season we are identified for best quality
+            Mangos for your region and if we have athis is general information
+            of Mango season we are identified for best quality Mangos for your
+            region and if we have athis is general information of Mango season
+            we are identified for best quality Mangos for your region and if we
+            have athis is general information of Mango season we are identified
+            for best quality Mangos for your region and if we have athis is
+            general information of Mango season we are identified for best
+            quality Mangos for your region and if we have athis is general
+            information of Mango season we are identified for best quality
+            Mangos for your region and if we have a
           </div>
         )}
       </div>

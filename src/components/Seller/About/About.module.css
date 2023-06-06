@@ -9,12 +9,28 @@
 }
 .icon {
   font-size: 1.5rem;
-  transition: 0.3s;
+  transition: 0.4s;
 }
 .activated {
   rotate: 180deg;
 }
 .para {
   width: 90vw;
+  overflow: hidden;
   background-color: rgb(241, 215, 164);
+  animation-name: increase;
+  animation-duration: 1s;
+}
+.para > div {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes increase {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 20rem;
+  }
 }

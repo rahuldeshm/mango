@@ -12,7 +12,13 @@ const ProductItem = (props) => {
   let ret = parseInt((likes / (likes + dislikes)) * 5);
   let retting = [];
   for (let i = 0; i < 5; i++) {
-    retting.push(ret > 0 ? <AiFillStar /> : <AiOutlineStar />);
+    retting.push(
+      ret > 0 ? (
+        <AiFillStar key={`${i}fill`} />
+      ) : (
+        <AiOutlineStar key={`${i}empty`} />
+      )
+    );
     ret--;
   }
   return (

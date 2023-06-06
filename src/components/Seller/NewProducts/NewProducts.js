@@ -29,6 +29,10 @@ function NewProducts() {
       available,
       canReturn,
       condition,
+      likes: [],
+      dislikes: [],
+      buyed: [],
+      comments: {},
     });
     dispatch(
       productActions.addProduct({
@@ -41,6 +45,10 @@ function NewProducts() {
         available,
         canReturn,
         condition,
+        likes: [],
+        dislikes: [],
+        buyed: [],
+        comments: {},
       })
     );
     history.push("/seller/yourproducts");
