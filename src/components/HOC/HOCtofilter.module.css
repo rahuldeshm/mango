@@ -5,14 +5,23 @@
   background-color: rgb(48, 56, 20);
   color: white;
 }
-.filter input,
-select {
+.filter input {
   border: none;
   box-shadow: 0px 0px 10px white;
   border-radius: 5px;
   width: 40%;
-  height: 1.5rem;
+  height: 2rem;
   background-color: rgb(72, 83, 30);
-  padding: 3px 0px 3px 12px;
+  padding: 0px 0px 0px 12px;
+  color: white;
+}
+.filter select {
+  border: none;
+  box-shadow: 0px 0px 10px white;
+  border-radius: 5px;
+  width: 40%;
+  height: 2rem;
+  background-color: rgb(72, 83, 30);
+  padding: 0px 0px 0px 12px;
   color: white;
 }

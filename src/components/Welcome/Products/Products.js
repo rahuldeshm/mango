@@ -1,7 +1,7 @@
 import React from "react";
 import HOCtofilter from "./../../HOC/HOCtofilter";
 import ProductItem from "../../Product/ProductItem";
-import classes from "./Products.module.css";
+import classes from "./../../Seller/YourProducts/YourProducts.module.css";
 
 function Products(props) {
   return (
