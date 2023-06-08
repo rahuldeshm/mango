@@ -1,9 +1,8 @@
 .main {
   display: flex;
   flex-wrap: wrap;
-  padding: 1rem;
+  min-height: 84vh;
   justify-content: space-around;
-  align-items: center;
-  min-height: 59vh;
   background-color: rgb(48, 56, 20);
+  padding: 0.5rem;
 }

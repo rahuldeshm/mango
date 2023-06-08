@@ -4,6 +4,7 @@ import styles from "./ProductItem.module.css";
 import { useSelector } from "react-redux";
 import SellerItem from "./SellerItem";
 import CostmerItem from "./CostmerItem";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const ProductItem = (props) => {
   const type = useSelector((state) => state.auth.type);
@@ -21,12 +22,15 @@ const ProductItem = (props) => {
     );
     ret--;
   }
+  console.log("item rendered");
   return (
     <div className={styles.itemBox}>
-      <div
-        className={styles.imgdiv}
-        style={{ backgroundImage: `url("${props.data.imglist[1]}")` }}
-      ></div>
+      <Link to={`/product/${props.data.id}`}>
+        <div
+          className={styles.imgdiv}
+          style={{ backgroundImage: `url("${props.data.imglist[1]}")` }}
+        ></div>
+      </Link>
       <div className={styles.itemDetails}>
         <p>Price: {props.data.price} Rs</p>
         <h4>{props.data.product}</h4>

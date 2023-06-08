@@ -4,7 +4,6 @@ import classes from "./header.module.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/authSlice";
-import { productActions } from "../../store/productSlice";
 
 function Header() {
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ function Header() {
   }
   const logoutHandler = () => {
     dispatch(authActions.logout());
-    dispatch(productActions.logout());
   };
   return (
     <div className={classes.header}>

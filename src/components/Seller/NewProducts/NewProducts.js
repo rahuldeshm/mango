@@ -32,7 +32,7 @@ function NewProducts() {
       likes: [],
       dislikes: [],
       buyed: [],
-      comments: {},
+      comments: [],
     });
     dispatch(
       productActions.addProduct({
@@ -48,7 +48,7 @@ function NewProducts() {
         likes: [],
         dislikes: [],
         buyed: [],
-        comments: {},
+        comments: [],
       })
     );
     history.push("/seller/yourproducts");

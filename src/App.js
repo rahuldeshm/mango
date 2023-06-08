@@ -10,12 +10,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { uiActions } from "./store/uiSlice";
 import { productActions } from "./store/productSlice";
+import Individual from "./components/Individual/Individual";
 
 const url = "https://mango-7694c-default-rtdb.firebaseio.com";
 function App() {
   const loader = useSelector((state) => state.ui.loader);
   const type = useSelector((state) => state.auth.type);
-  const email = useSelector((state) => state.auth.email);
   const dispatch = useDispatch();
   useEffect(() => {
     async function fetchHandler() {
@@ -30,19 +30,10 @@ function App() {
       if (res.ok) {
         const keys = Object.keys(data);
         let filtered = [];
-        if (type === "Seller") {
-          for (let i of keys) {
-            if (data[i].email === email) {
-              filtered.push({ ...data[i], id: i });
-            }
-          }
-          dispatch(productActions.addProduct(filtered));
-        } else {
-          for (let i of keys) {
-            filtered.push({ ...data[i], id: i });
-          }
-          dispatch(productActions.addProduct(filtered));
+        for (let i of keys) {
+          filtered.push({ ...data[i], id: i });
         }
+        dispatch(productActions.addProduct(filtered));
       } else {
         alert(data.error.message);
       }
@@ -60,6 +51,9 @@ function App() {
       </Route>
       <Route path="/welcome">
         <Welcome />
+      </Route>
+      <Route path="/product/:id">
+        <Individual />
       </Route>
       {type === "Seller" && (
         <Route path="/seller">

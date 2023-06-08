@@ -3,9 +3,9 @@ import SellerHeader from "./SellerHeader";
 import { Switch, Route, Redirect } from "react-router-dom/cjs/react-router-dom";
 import About from "./About/About";
 import Profile from "./Profile/Profile";
-import YourProducts from "./YourProducts/YourProducts";
 import NewProducts from "./NewProducts/NewProducts";
 import Footer from "../../Footer/Footer";
+import EnhancedYourProduct from "./YourProducts/YourProducts";
 
 function Seller() {
   return (
@@ -22,7 +22,7 @@ function Seller() {
           <Profile />
         </Route>
         <Route path="/seller/yourproducts">
-          <YourProducts />
+          <EnhancedYourProduct />
         </Route>
         <Route path="/seller/newproducts">
           <NewProducts />
