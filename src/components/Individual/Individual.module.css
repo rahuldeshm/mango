@@ -1,0 +1,31 @@
+.maincontainer {
+  background-color: rgb(48, 56, 20);
+  display: flex;
+  padding: 1rem;
+}
+
+.slidermain {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  color: white;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  width: 50%;
+}
+
+@media (max-width: 800px) {
+  .maincontainer {
+    flex-direction: column;
+  }
+  .slidermain {
+    width: 100%;
+  }
+  .description {
+    width: 100%;
+  }
+}
