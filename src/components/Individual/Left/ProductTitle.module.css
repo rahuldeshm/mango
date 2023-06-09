@@ -1,0 +1,16 @@
+.producttitle {
+  color: gold;
+  display: flex;
+  justify-content: space-around;
+  margin: 0px;
+  border-top: 1px solid salmon;
+  background-image: linear-gradient(rgb(63, 1, 44), rgb(48, 56, 20));
+}
+.ratting {
+  padding-top: 3px;
+}
+.icon {
+  margin: 0px;
+  font-size: xx-large;
+  width: 1.8rem;
+}

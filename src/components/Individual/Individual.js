@@ -3,11 +3,17 @@ import classes from "./Individual.module.css";
 import Footer from "./../../Footer/Footer";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import ImageSlider from "./ImageSlider";
-import ProductHeader from "./ProductHeader";
+import ImageSlider from "./Left/ImageSlider";
+import ProductHeader from "./Left/ProductHeader";
+import ProductTitle from "./Left/ProductTitle";
+import SellerItem from "../Product/SellerItem";
+import CostmerItem from "../Product/CostmerItem";
+import Discription from "./Right/Discription";
+import Return from "./Right/Return";
+import NewComments from "./Right/NewComment";
 
 function Individual() {
-  const [counter, setCounter] = useState();
+  const type = useSelector((state) => state.auth.type);
   const params = useParams();
   const products = useSelector((state) => state.product.products);
   const product = products.filter((e) => e.id === params.id)[0];
@@ -15,13 +21,21 @@ function Individual() {
 
   return (
     <>
+      <ProductTitle product={product} />
       <div className={classes.maincontainer}>
         <div className={classes.slidermain}>
           <ImageSlider list={product.imglist} />
           <ProductHeader product={product} />
+          {type === "Seller" ? (
+            <SellerItem product={product} />
+          ) : (
+            <CostmerItem product={product} />
+          )}
         </div>
         <div className={classes.description}>
-          <h2>{product.discription}</h2>
+          <Discription product={product} />
+          <Return product={product} />
+          <NewComments product={product} />
         </div>
       </div>
       <Footer />

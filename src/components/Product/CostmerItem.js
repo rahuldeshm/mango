@@ -3,6 +3,7 @@ import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import classes from "./CostmerItem.module.css";
 
 function CostmerItem(props) {
+  //receiving props.product
   const [toggle, setToggle] = useState(true);
   const [enteredValue, setEnteredValue] = useState("");
   const likes = 0;

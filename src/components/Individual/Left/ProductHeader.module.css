@@ -1,0 +1,6 @@
+.productheader {
+  display: flex;
+  color: aqua;
+  justify-content: space-around;
+  background-color: rgb(103, 97, 24);
+}

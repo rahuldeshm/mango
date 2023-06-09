@@ -4,9 +4,8 @@ import classes from "./ProductHeader.module.css";
 function ProductHeader(props) {
   return (
     <div className={classes.productheader}>
-      <h1>{props.product.product}</h1>
-      <input type="number" />
-      <button>Add to cart</button>
+      <h2>{`${props.product.price} Rs`}</h2>
+      <h2>{`Available Dozens : ${props.product.available} `}</h2>
     </div>
   );
 }

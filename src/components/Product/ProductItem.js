@@ -22,7 +22,6 @@ const ProductItem = (props) => {
     );
     ret--;
   }
-  console.log("item rendered");
   return (
     <div className={styles.itemBox}>
       <Link to={`/product/${props.data.id}`}>

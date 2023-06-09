@@ -12,6 +12,7 @@ function ImageSlider(props) {
         {props.list.map((e, index) => {
           return (
             <img
+              key={index}
               style={
                 active === index
                   ? {

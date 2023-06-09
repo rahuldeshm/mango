@@ -1,14 +1,13 @@
 .maincontainer {
   background-color: rgb(48, 56, 20);
   display: flex;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 1rem;
 }
 
 .slidermain {
   display: flex;
   flex-direction: column;
   width: 50%;
-  color: white;
 }
 
 .description {
@@ -27,5 +26,6 @@
   }
   .description {
     width: 100%;
+    padding-left: 0px;
   }
 }
