@@ -12,8 +12,12 @@ const HOC = (WrappedComponent, entity) => {
   const HOC = () => {
     const [limit, setLimit] = useState({ upper: 500000, lower: 0 });
     const [term, setTerm] = useState("");
-    const list = useSelector((state) => state.product.products);
-
+    const data = useSelector((state) => state.product.products);
+    const keys = Object.keys(data);
+    let list = [];
+    for (let i of keys) {
+      list.push({ ...data[i], id: i });
+    }
     const filtereddataof = list.filter((e) => {
       return e.product.indexOf(term) >= 0 || e.email.indexOf(term) >= 0;
     });

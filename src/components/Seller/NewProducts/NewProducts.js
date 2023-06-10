@@ -5,12 +5,13 @@ import useFetch from "../../Hooks/useFetch";
 import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../../../store/productSlice";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { currentProductActions } from "../../../store/currentProductSlice";
 
 function NewProducts() {
   const dispatch = useDispatch();
   const history = useHistory();
   const email = useSelector((state) => state.auth.email);
-  const [dataSendedToserver, sendDatatoserver] = useFetch(null);
+  const [sendDatatoserver] = useFetch(null);
   const dataHandler = async (
     product,
     discription,
@@ -18,25 +19,15 @@ function NewProducts() {
     imglist,
     available,
     canReturn,
-    condition
+    condition,
+    method,
+    id
   ) => {
-    const data = await sendDatatoserver("products", "POST", "", {
-      email,
-      product,
-      discription,
-      price,
-      imglist,
-      available,
-      canReturn,
-      condition,
-      likes: [],
-      dislikes: [],
-      buyed: [],
-      comments: [],
-    });
-    dispatch(
-      productActions.addProduct({
-        id: data.name,
+    const data = await sendDatatoserver(
+      "products",
+      method,
+      "",
+      {
         email,
         product,
         discription,
@@ -49,8 +40,30 @@ function NewProducts() {
         dislikes: [],
         buyed: [],
         comments: [],
+      },
+      id
+    );
+    dispatch(
+      productActions.addNewProduct({
+        id: data.name,
+        product: {
+          email,
+          product,
+          discription,
+          price,
+          imglist,
+          available,
+          canReturn,
+          condition,
+          likes: [0],
+          dislikes: [0],
+          buyed: [0],
+          comments: {},
+        },
       })
     );
+
+    dispatch(currentProductActions.addCurrent(null));
     history.push("/seller/yourproducts");
   };
 

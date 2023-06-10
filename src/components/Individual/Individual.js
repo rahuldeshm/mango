@@ -16,8 +16,7 @@ function Individual() {
   const type = useSelector((state) => state.auth.type);
   const params = useParams();
   const products = useSelector((state) => state.product.products);
-  const product = products.filter((e) => e.id === params.id)[0];
-  console.log(product);
+  const product = { ...products[params.id], id: params.id };
 
   return (
     <>

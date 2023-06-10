@@ -7,8 +7,8 @@ function getSavedData(key, key2) {
 }
 
 function useLocalstorage(key1, key2) {
-  const email = useSelector((state) => state.auth.authorisation.email);
-  const femail = email.replace("@", "").replace(".", "");
+  const femail = useSelector((state) => state.auth.email);
+
   const [value, setValue] = useState(() =>
     getSavedData(`${key1}${femail}`, key2)
   );

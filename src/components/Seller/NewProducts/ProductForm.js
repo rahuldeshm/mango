@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./ProductForm.module.css";
 import ImageUploader from "../../ImageUploader/ImageUploader";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const ProductForm = (props) => {
   const [productName, setProductName] = useState("");
@@ -10,6 +12,20 @@ const ProductForm = (props) => {
   const [pricePerDozen, setPricePerDozen] = useState(0);
   const [availableInDozen, setAvailableInDozen] = useState(0);
   const [urlList, setUrlList] = useState([]);
+  const current = useSelector((state) => state.current.current);
+  const method = !!current ? "PATCH" : "POST";
+  const id = !!current ? current.id : "";
+  useEffect(() => {
+    if (!!current) {
+      setProductDescription(current.discription);
+      setCanReturn(current.canReturn);
+      setReturnConditions(current.condition);
+      setProductName(current.product);
+      setPricePerDozen(current.price);
+      setAvailableInDozen(current.available);
+      setUrlList(current.imglist);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +48,9 @@ const ProductForm = (props) => {
       urlList,
       availableInDozen,
       canReturn,
-      returnConditions
+      returnConditions,
+      method,
+      id
     );
   };
 

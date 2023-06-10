@@ -8,9 +8,10 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const ProductItem = (props) => {
   const type = useSelector((state) => state.auth.type);
-  const likes = 5;
-  const dislikes = 3;
-  let ret = parseInt((likes / (likes + dislikes)) * 5);
+  const likes = props.data.likes.length;
+  const dislikes = props.data.dislikes.length;
+  let ret =
+    likes + dislikes > 0 ? parseInt((likes / (likes + dislikes)) * 5) : 0;
   let retting = [];
   for (let i = 0; i < 5; i++) {
     retting.push(
@@ -37,8 +38,8 @@ const ProductItem = (props) => {
       <div className={styles.details}>
         <p>{`Availability : ${props.data.available} dozen`}</p>
       </div>
-      {type === "Seller" && <SellerItem />}
-      {type !== "Seller" && <CostmerItem />}
+      {type === "Seller" && <SellerItem product={props.data} />}
+      {type !== "Seller" && <CostmerItem product={props.data} />}
       <div className={styles.ratting}>{retting}</div>
     </div>
   );

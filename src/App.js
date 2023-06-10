@@ -11,35 +11,17 @@ import { useEffect } from "react";
 import { uiActions } from "./store/uiSlice";
 import { productActions } from "./store/productSlice";
 import Individual from "./components/Individual/Individual";
+import useFetch from "./components/Hooks/useFetch";
 
-const url = "https://mango-7694c-default-rtdb.firebaseio.com";
 function App() {
+  const [fetchHandler] = useFetch();
   const loader = useSelector((state) => state.ui.loader);
   const type = useSelector((state) => state.auth.type);
   const dispatch = useDispatch();
   useEffect(() => {
-    async function fetchHandler() {
-      dispatch(uiActions.setLoader());
-      const res = await fetch(`${url}/products.json`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      if (res.ok) {
-        const keys = Object.keys(data);
-        let filtered = [];
-        for (let i of keys) {
-          filtered.push({ ...data[i], id: i });
-        }
-        dispatch(productActions.addProduct(filtered));
-      } else {
-        alert(data.error.message);
-      }
-      dispatch(uiActions.setLoader());
-    }
-    fetchHandler();
+    fetchHandler("products", "GET").then((data) => {
+      dispatch(productActions.addProduct(data));
+    });
   }, []);
   return (
     <>

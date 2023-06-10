@@ -10,7 +10,7 @@ const local = (email) => {
   return JSON.parse(localStorage.getItem(`Profile${email}`));
 };
 function Profile() {
-  const [fetchdata, serverFetchdata] = useFetch(null);
+  const [serverFetchdata] = useFetch(null);
   const email = useSelector((state) => state.auth.email);
   const [showForm, setShowForm] = useState(0);
   const wid = `${(showForm * 100) / 3}%`;
@@ -30,20 +30,20 @@ function Profile() {
   const fetchHandler = () => {
     if (!!locald) {
       setShowForm(Object.keys(locald).length);
-    } else if (!!fetchdata) {
-      let key = Object.keys(fetchdata)[0];
-      localStorage.setItem(
-        `Profile${email}`,
-        JSON.stringify({ ...fetchdata[key] })
-      );
-      localStorage.setItem(`profilekey${email}`, JSON.stringify(key));
-      setShowForm(3);
     } else {
       // console.log("tried to fetch data");
-      serverFetchdata("Profile", "GET", email);
+      serverFetchdata("Profile", "GET", email).then((fetchdata) => {
+        let key = Object.keys(fetchdata)[0];
+        localStorage.setItem(
+          `Profile${email}`,
+          JSON.stringify({ ...fetchdata[key] })
+        );
+        localStorage.setItem(`profilekey${email}`, JSON.stringify(key));
+        setShowForm(3);
+      });
     }
   };
-  useEffect(fetchHandler, [fetchdata]);
+  useEffect(fetchHandler, []);
   console.log("component rerendered");
   return (
     <div className="main">
