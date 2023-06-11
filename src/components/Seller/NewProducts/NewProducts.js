@@ -36,16 +36,16 @@ function NewProducts() {
         available,
         canReturn,
         condition,
-        likes: [],
-        dislikes: [],
-        buyed: [],
-        comments: [],
+        likes: [0],
+        dislikes: [0],
+        buyed: [0],
+        comments: [0],
       },
       id
     );
     dispatch(
       productActions.addNewProduct({
-        id: data.name,
+        id: method === "POST" ? data.name : id,
         product: {
           email,
           product,
@@ -58,7 +58,7 @@ function NewProducts() {
           likes: [0],
           dislikes: [0],
           buyed: [0],
-          comments: {},
+          comments: [0],
         },
       })
     );

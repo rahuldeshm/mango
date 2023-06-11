@@ -3,8 +3,8 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import classes from "./ProductTitle.module.css";
 
 function ProductTitle(props) {
-  const likes = 5;
-  const dislikes = 3;
+  const likes = !!props.product.likes ? props.product.likes.length : 0;
+  const dislikes = !!props.product.dislikes ? props.product.dislikes.length : 0;
   let ret = parseInt((likes / (likes + dislikes)) * 5);
   let retting = [];
   for (let i = 0; i < 5; i++) {

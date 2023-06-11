@@ -16,27 +16,31 @@ function Individual() {
   const type = useSelector((state) => state.auth.type);
   const params = useParams();
   const products = useSelector((state) => state.product.products);
-  const product = { ...products[params.id], id: params.id };
+  const product = !!products[params.id]
+    ? { ...products[params.id], id: params.id }
+    : null;
 
   return (
     <>
-      <ProductTitle product={product} />
-      <div className={classes.maincontainer}>
-        <div className={classes.slidermain}>
-          <ImageSlider list={product.imglist} />
-          <ProductHeader product={product} />
-          {type === "Seller" ? (
-            <SellerItem product={product} />
-          ) : (
-            <CostmerItem product={product} />
-          )}
+      {!!product && <ProductTitle product={product} />}
+      {!!product && (
+        <div className={classes.maincontainer}>
+          <div className={classes.slidermain}>
+            <ImageSlider list={product.imglist} />
+            <ProductHeader product={product} />
+            {type === "Seller" ? (
+              <SellerItem product={product} />
+            ) : (
+              <CostmerItem product={product} />
+            )}
+          </div>
+          <div className={classes.description}>
+            <Discription product={product} />
+            <Return product={product} />
+            <NewComments product={product} />
+          </div>
         </div>
-        <div className={classes.description}>
-          <Discription product={product} />
-          <Return product={product} />
-          <NewComments product={product} />
-        </div>
-      </div>
+      )}
       <Footer />
     </>
   );

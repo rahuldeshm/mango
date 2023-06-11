@@ -4,6 +4,7 @@ import useFetch from "../Hooks/useFetch";
 import { productActions } from "./../../store/productSlice";
 import { useDispatch } from "react-redux";
 import { currentProductActions } from "../../store/currentProductSlice";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function SellerItem(props) {
   //product as props
@@ -11,6 +12,7 @@ function SellerItem(props) {
   const [fetchHandler] = useFetch();
   const [toggle, setToggle] = useState(true);
   const [enteredValue, setEnteredValue] = useState("");
+  const history = useHistory();
 
   const inputstyle = toggle
     ? { width: "2%", background: "rgb(143, 170, 143)", border: "none" }
@@ -39,10 +41,12 @@ function SellerItem(props) {
   };
   const editHandler = () => {
     dispatch(currentProductActions.addCurrent(props.product));
+    history.push("/seller/newproducts");
   };
   const deleteHandler = () => {
     fetchHandler("products", "DELETE", "", null, props.product.id).then(
       (data) => {
+        history.push("/seller/yourProducts");
         dispatch(productActions.deleteProduct(props.product.id));
       }
     );

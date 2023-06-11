@@ -8,8 +8,8 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const ProductItem = (props) => {
   const type = useSelector((state) => state.auth.type);
-  const likes = props.data.likes.length;
-  const dislikes = props.data.dislikes.length;
+  const likes = !!props.data.likes ? props.data.likes.length : 0;
+  const dislikes = !!props.data.dislikes ? props.data.dislikes.length : 0;
   let ret =
     likes + dislikes > 0 ? parseInt((likes / (likes + dislikes)) * 5) : 0;
   let retting = [];

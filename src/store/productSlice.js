@@ -21,6 +21,8 @@ const productSlice = createSlice({
     deleteProduct(state, action) {
       const products = { ...state.products };
       delete products[action.payload];
+      console.log(products);
+      state.products = products;
     },
   },
 });
