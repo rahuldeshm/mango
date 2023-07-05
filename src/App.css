@@ -7,3 +7,6 @@
   min-height: 59vh;
   background-color: rgb(48, 56, 20);
 }
+body {
+  overflow-x: hidden !important;
+}
